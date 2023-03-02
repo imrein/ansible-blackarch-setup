@@ -1,0 +1,38 @@
+---
+# Packages
+
+- name: Check if repo is already installed
+  stat:
+    path: /etc/pacman.d/blackarch-mirrorlist
+  register: stat_result
+
+# Add blackarch repo if it doesn't exist yet
+- name: Setup blackarch repository
+  block:
+    - name: Download install script + checksum + make executable
+      get_url:
+        url: https://blackarch.org/strap.sh
+        mode: 0744
+        dest: /tmp/
+        checksum: sha1:5ea40d49ecd14c2e024deecf90605426db97ea0c
+
+    - name: Execute Blackarch script
+      become: true
+      command: bash /tmp/strap.sh
+
+    - name: Cleanup
+      file:
+        path: /tmp/strap.sh
+        state: absent
+
+    - name: Update repositories
+      become: true
+      pacman:
+        update_cache: yes
+
+    # Install packages
+    - name: Install packages
+      become: true
+      pacman:
+        name: '{{ packages_setup }}'
+  when: not stat_result.stat.exists

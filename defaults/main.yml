@@ -1,0 +1,14 @@
+---
+
+############
+# Packages #
+############
+
+# General packages
+packages_setup:
+  - nmap
+  - hydra
+  - john
+  - burpsuite
+  - hcxtools
+  - crackmapexec
