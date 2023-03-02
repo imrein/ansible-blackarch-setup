@@ -7,9 +7,9 @@ An existing Arch linux.
 
 ## Role Variables
 
-| Variable    | Default | Info                    |
-| :---------- | :------ | :---------------------- |
-| `packages`  | `[]`    | Hostname of the system  |
+| Variable    | Default | Info                               |
+| :---------- | :------ | :--------------------------------- |
+| `packages`  | `[]`    | Packages that should be installed  |
 
 ## Example playbook
 
