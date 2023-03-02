@@ -5,10 +5,19 @@
 ############
 
 # General packages
-packages_setup:
+packages:
   - nmap
   - hydra
   - john
   - burpsuite
   - hcxtools
   - crackmapexec
+  - gobuster
+  - dirbuster
+  - metasploit
+  - hashcat
+  - wfuzz
+  - responder
+  - dirb
+  - exiftool
+  - netcat
