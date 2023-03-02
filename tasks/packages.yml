@@ -1,6 +1,7 @@
 ---
 # Packages
 
+# Check
 - name: Check if repo is already installed
   stat:
     path: /etc/pacman.d/blackarch-mirrorlist
@@ -34,5 +35,5 @@
     - name: Install packages
       become: true
       pacman:
-        name: '{{ packages_setup }}'
+        name: "{{ packages }}"
   when: not stat_result.stat.exists
